@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="printax_pos_module_ws.print_fact_button">
+        <button type="button" class='css_print_fact_button'>
+            Imprimir FAC.FIS.
+        </button>
+    </t>
+</templates>

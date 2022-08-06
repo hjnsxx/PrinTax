@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="printax_pos_module_ws.point_of_sale" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/printax_pos_module_ws/static/src/js/screens.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="res_config_settings_printax" model="ir.ui.view">
+		<field name="name">config printax</field>
+		<field name="model">res.config.settings</field>
+		<field name="inherit_id" ref="account.res_config_settings_view_form"/>
+		<field name="arch" type="xml">
+			<div id="invoicing_settings" position="inside">
+				<div class="col-12 col-lg-6 o_setting_box">
+					<div class="o_setting_left_pane" />
+					<div class="o_setting_right_pane">
+						<span class="o_form_label">PrinTax</span>
+						<div class="text-muted">
+							Configuración de conexión al PrinTax
+						</div>
+						<div class="content-group mt16">
+							<div>
+								<label string="Dirección" for="printax_ip" class="col-lg-2 o_light_label"/>
+								<field name = "printax_ip" />
+							</div>
+							<div>
+								<label string="Puerto" for="printax_port" class="col-lg-2 o_light_label"/>
+								<field name = "printax_port" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</field>
+	</record>
+	
+	<record model="ir.ui.view" id="instrumento_de_pago_id">
+		<field name="name">instrumento_de_pago</field>
+		<field name="model">res.currency</field>
+		<field name="inherit_id" ref="base.view_currency_form"/>
+		<field name="arch" type="xml">
+			<field name="currency_subunit_label" position="after">
+				<field name="printax_idp"/>
+			</field>
+		</field>
+	</record>
+
+	<record id="account_move_fiscal_print" model="ir.ui.view">
+		<field name="name">imprimir fact fiscal</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_move_form"/>
+		<field name="arch" type="xml">
+			<header>
+				<button name="imprimir_factura_fiscal" string="Enviar al impresor fiscal" class="oe_highlight" type="object" groups="account.group_account_invoice" attrs="{'invisible':[('state', 'in', ['printed']),('state', 'in', ['draft','cancel'])]}"/>
+			</header>
+<!--		
+		<xpath expr="//sheet/group//group[last()]" position="inside">
+			<label for="state" states="open,paid"/>
+			<div class="o_row">
+				<field name="state" states="open,paid"/>
+				<button name="imprimir_factura_fiscal" string="Enviar al impresor fiscal" class="oe_link" type="object" groups="account.group_account_invoice" attrs="{'invisible':[('state', 'in', ['printed']),('state', 'in', ['draft','cancel'])]}"/>
+			</div>
+		</xpath>
+-->		
+		</field>
+	</record>
+</odoo>
